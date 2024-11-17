@@ -1,0 +1,38 @@
+﻿@model List<MyPortfolio_MVC.Models.Project>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<h2>Projelerim</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Proje Adı</th>
+        <th>Proje Açıklaması</th>
+        <th>Kategori</th>
+        <th>Github Url</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <th><img src="@item.ImageUrl" style="width:50px;height:50px" alt="Proje Görseli"/>@item.Name</th>
+            <th>@item.Description</th>
+            <th>@item.Category.Name</th>
+            <th><a href="@item.GithubUrl" class="btn btn-outline-warning">Github Linki</a></th>
+            <th><a href="/Project/DeleteProject/@item.Id" class="btn btn-outline-danger">Sil</a></th>
+            <th><a href="/Project/UpdateProject/@item.Id" class="btn btn-outline-info">Güncelle</a></th>
+
+        </tr>
+    }
+
+</table>
+<br/>
+<a href="/Project/CreateProject/" class="btn btn-outline-success">Yeni Proje Ekle</a>

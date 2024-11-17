@@ -30,5 +30,28 @@ namespace MyPortfolio_MVC.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult DeleteCategory(int id)
+        {
+            var value = db.Categories.Find(id);
+            db.Categories.Remove(value);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult UpdateCategory(int id)
+        {
+            var value = db.Categories.Find(id);
+            return View(value);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateCategory(Category category)
+        {
+            var value = db.Categories.Find(category.Id);
+            value.Name = category.Name;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
