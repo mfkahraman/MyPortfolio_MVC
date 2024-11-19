@@ -15,11 +15,11 @@ namespace MyPortfolio_MVC.Controllers
         {
             var categoryList = db.Categories.ToList();
             List<SelectListItem> categories = (from x in categoryList
-                                                      select new SelectListItem
-                                                      {
-                                                          Text = x.Name,
-                                                          Value = x.Id.ToString(),
-                                                      }).ToList();
+                                               select new SelectListItem
+                                               {
+                                                   Text = x.Name,
+                                                   Value = x.Id.ToString(),
+                                               }).ToList();
             ViewBag.categories = categories;
         }
 
