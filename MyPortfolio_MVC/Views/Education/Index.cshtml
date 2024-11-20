@@ -28,11 +28,11 @@
     <th>@item</th>
     <td>@item.SchoolName</td>
     <td>@item.Department</td>
-    <td>@item.StartDate.Value.ToShortDateString()</td>
+    <td>@item.StartDate.ToShortDateString()</td>
     <td>@(String.IsNullOrEmpty(item.EndDate?.ToString()) ? "Devam ediyor" : item.EndDate?.ToShortDateString())</td>
     <td>@item.Degree</td>
     <td><a href="/Education/DeleteEducation/@item.Id" class="btn btn-outline-danger">Sil</a></td>
-    <td><a href="/Education/UpdateEducation/@item.Id" class="btn btn-outline-danger">Güncelle</a></td>
+    <td><a href="/Education/UpdateEducation/@item.Id" class="btn btn-outline-info">Güncelle</a></td>
     </tr>
 }
 </table>
