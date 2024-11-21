@@ -12,11 +12,11 @@ namespace MyPortfolio_MVC.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Experince
+    public partial class Experience
     {
         public int Id { get; set; }
         public string CompanyName { get; set; }
-        public Nullable<System.DateTime> Title { get; set; }
+        public string Title { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public string Description { get; set; }
