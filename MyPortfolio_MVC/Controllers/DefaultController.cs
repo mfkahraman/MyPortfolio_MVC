@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace MyPortfolio_MVC.Controllers
 {
+    [AllowAnonymous]
     public class DefaultController : Controller
     {
         MyPortfolioEntities db = new MyPortfolioEntities();
@@ -30,6 +31,12 @@ namespace MyPortfolio_MVC.Controllers
         public PartialViewResult DefaultExperience()
         {
             var values = db.Experiences.ToList();
+            return PartialView(values);
+        }
+
+        public PartialViewResult DefaultProject()
+        {
+            var values = db.Projects.ToList();
             return PartialView(values);
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyPortfolio_MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +9,7 @@ namespace MyPortfolio_MVC.Controllers
 {
     public class AdminLayoutController : Controller
     {
-        // GET: AdminLayout
+        MyPortfolioEntities db = new MyPortfolioEntities();
         public ActionResult Layout()
         {
             return View();
@@ -26,11 +27,21 @@ namespace MyPortfolio_MVC.Controllers
 
         public PartialViewResult AdminLayoutSideBar()
         {
+            var email = Session["email"].ToString();
+            var admin = db.Tbl_Admins.FirstOrDefault(x => x.Email == email);
+
+            ViewBag.nameSurname = admin.Name + " " + admin.Surname;
+            ViewBag.image = admin.ImageUrl;
             return PartialView();
         }
 
         public PartialViewResult AdminLayoutNavBar()
         {
+            var email = Session["email"].ToString();
+            var admin = db.Tbl_Admins.FirstOrDefault(x=> x.Email==email);
+
+            ViewBag.nameSurname = admin.Name+" "+admin.Surname;
+            ViewBag.image = admin.ImageUrl;
             return PartialView();
         }
 
