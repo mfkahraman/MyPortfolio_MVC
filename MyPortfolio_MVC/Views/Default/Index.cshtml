@@ -10,7 +10,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Luther</title>
+    <title>Furkan Kahraman</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -47,18 +47,18 @@
     ================================================== -->
     <div class="s-pagewrap">
 
-        <div class="circles">
+        <div><div class="circles">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             <span></span>
-        </div>
+        </div></div>
 
 
         <!-- ## site header
         ================================================== -->
-        <header class="s-header">
+        <div><header class="s-header">
 
             <div class="header-mobile">
                 <span class="mobile-home-link"><a href="index.html">Furkan.</a></span>
@@ -68,16 +68,17 @@
             <div class="row wide main-nav-wrap">
                 <nav class="column lg-12 main-nav">
                     <ul>
-                        <li><a href="current" class="home-link">Furkan.</a></li>
-                        <li><a href="#about" class="smoothscroll">Hakkımda</a></li>
-                        <li><a href="#experience" class="smoothscroll">Deneyİmlerİm</a></li>
-                        <li><a href="#works" class="smoothscroll">Projelerİm</a></li>
-                        <li><a href="#contact" class="smoothscroll">İletişİm</a></li>
+                        <li><a href="#intro" class="home-link">MERHABA</a></li>
+                        <li><a href="#about" class="smoothscroll">HAKKIMDA</a></li>
+                        <li><a href="#expertise" class="smoothscroll">UZMANLIK ALANLARIM</a></li>
+                        <li><a href="#experience" class="smoothscroll">DENEYİMLERİM</a></li>
+                        <li><a href="#works" class="smoothscroll">PROJELERİM</a></li>
+                        <li><a href="#contact" class="smoothscroll">İLETİŞİM</a></li>
                     </ul>
                 </nav>
             </div>
 
-        </header> <!-- end s-header -->
+        </header></div> <!-- end s-header -->
         <!-- ## main content
         ==================================================- -->
         <main class="s-content">
@@ -89,155 +90,15 @@
             <!-- end s-intro -->
             <!-- ### about
             ================================================== -->
-            <section id="about" class="s-about target-section">
-
-
-                <div class="row about-info wide" data-animate-block>
-
-                    <div class="column lg-6 md-12 about-info__pic-block">
-                        <img src="images/about-photo.jpg"
-                             srcset="images/about-photo.jpg 1x, images/about-photo@2x.jpg 2x" alt="" class="about-info__pic" data-animate-el>
-                    </div>
-
-                    <div class="column lg-6 md-12">
-                        <div class="about-info__text">
-
-                            <h2 class="text-pretitle with-line" data-animate-el>
-                                About
-                            </h2>
-                            <p class="attention-getter" data-animate-el>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                velit esse cillum dolore eu fugiat nulla pariatur.
-                            </p>
-                            <a href="#0" class="btn btn--medium u-fullwidth" data-animate-el>Download CV</a>
-
-                        </div>
-                    </div>
-                </div> <!-- about-info -->
-
-                @Html.Action("DefaultExpertise")
-                <!-- end about-expertise -->
-
-
-                <div class="row about-timelines" data-animate-block>
-
-                    @Html.Action("DefaultExperience")<!-- end column -->
-
-                    <div class="column lg-6 tab-12">
-
-                        <h2 class="text-pretitle" data-animate-el>
-                            Education
-                        </h2>
-
-                        <div class="timeline" data-animate-el>
-
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">
-                                        University of Life</h3>
-                                        <h5 class="timeline__meta">Master in Graphic Design</h5>
-                                        <p class="timeline__timeframe">April 2015</p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi.</p>
-                                </div>
-                            </div>
-
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">School of Cool Designers</h4>
-                                    <h5 class="timeline__meta">B.A. Degree in Graphic Design</h5>
-                                    <p class="timeline__timeframe">August 2012</p>
-                                </div>
-                                <div class="timeline__desc">
-                                    <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi.</p>
-                                </div>
-                            </div>
-
-                        </div> <!-- end timeline -->
-
-                    </div> <!-- end column -->
-
-
-                </div> <!-- end about-timelines -->
-
-            </section> <!-- end s-about -->
+            @Html.Action("DefaultAbout")
+            <!-- end s-about -->
             <!-- ### works
             ================================================== -->
             @Html.Action("DefaultProject")
             <!-- end s-works -->
             <!-- ### contact
             ================================================== -->
-            <section id="contact" class="s-contact target-section">
-
-                <div class="row contact-top">
-                    <div class="column lg-12">
-                        <h2 class="text-pretitle">
-                            Get In Touch
-                        </h2>
-
-                        <p class="h1">
-                            I love to hear from you.
-                            Whether you have a question or just
-                            want to chat about design, tech & art — shoot me a message.
-                        </p>
-                    </div>
-                </div> <!-- end contact-top -->
-
-                <div class="row contact-bottom">
-                    <div class="column lg-3 md-5 tab-6 stack-on-550 contact-block">
-                        <h3 class="text-pretitle">Reach me at</h3>
-                        <p class="contact-links">
-                            <a href="mailto:sayhello@luther.com" class="mailtoui">sayhello@luther.com</a> <br>
-                            <a href="tel:+1975432345">+197 543 2345</a>
-                        </p>
-                    </div>
-                    <div class="column lg-4 md-5 tab-6 stack-on-550 contact-block">
-                        <h3 class="text-pretitle">Social</h3>
-                        <ul class="contact-social">
-                            <li><a href="#0">Behance</a></li>
-                            <li><a href="#0">Dribble</a></li>
-                            <li><a href="#0">Twitter</a></li>
-                            <li><a href="#0">Instagram</a></li>
-                            <li><a href="#0">Github</a></li>
-                        </ul>
-                    </div>
-                    <div class="column lg-4 md-12 contact-block">
-                        <a href="#modal-message" class="mailtoui btn btn--medium u-fullwidth contact-btn">Bana Ulaşın.</a>
-                    </div>
-                </div> <!-- end contact-bottom -->
-
-                <div id="modal-message" hidden>
-                    <div class="modal-popup">
-                        <img src="" alt="">
-
-                        <div class="modal-popup__desc">
-                            <form method="post">
-                                <label>Ad Soyad</label>
-                                <input type="text" name="Name" class="form-control" />
-                                <br />
-                                <label>Email</label>
-                                <input type="text" name="Email" class="form-control" />
-                                <br />
-                                <label>Konu</label>
-                                <input type="text" name="Subject" class="form-control" />
-                                <br />
-                                <label>Mesajınız</label>
-                                <textarea type="text" name="MessageContent" class="form-control" rows="4"></textarea>
-                                <br />
-                                <button class="btn btn-outline-dark">Mesajı Gönder</button>
-                            </form>
-                        </div>
-
-                    </div>
-                </div> <!-- end modal -->
-
-            </section> <!-- end contact -->
+            @Html.Action("SendMessage")
 
         </main> <!-- end s-content -->
         <!-- ## footer
@@ -246,8 +107,7 @@
 
             <div class="row">
                 <div class="column ss-copyright">
-                    <span>© Copyright Luther 2021</span>
-                    <span>Design by <a href="https://www.styleshout.com/">StyleShout</a> Distribution By <a href="https://themewagon.com">Themewagon</a></span>
+                    <span>Bu tema Furkan Kahraman tarafından özelleştirildi</span>
                 </div>
 
                 <div class="ss-go-top">

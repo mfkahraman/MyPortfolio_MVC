@@ -39,5 +39,32 @@ namespace MyPortfolio_MVC.Controllers
             var values = db.Projects.ToList();
             return PartialView(values);
         }
+
+        [HttpGet]
+        public PartialViewResult SendMessage()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult SendMessage(Message model)
+        {
+            model.IsRead = false;
+            db.Messages.Add(model);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public PartialViewResult DefaultAbout()
+        {
+            var values = db.Abouts.ToList();
+            return PartialView(values);
+        }
+
+        public PartialViewResult DefaultEducation()
+        {
+            var values = db.Educations.ToList();
+            return PartialView(values);
+        }
     }
 }

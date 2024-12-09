@@ -1,9 +1,8 @@
-﻿@model List<MyPortfolio_MVC.Models.Experience>
-
-<div class="column lg-6 tab-12" id="experience">
+﻿@model List<MyPortfolio_MVC.Models.Education>
+<div class="column lg-6 tab-12">
 
     <h2 class="text-pretitle with-line" data-animate-el>
-        DENEYİMLERİM
+        EĞİTİM HAYATIM
     </h2>
 
     <div class="timeline" data-animate-el>
@@ -13,9 +12,9 @@
             <div class="timeline__block">
                 <div class="timeline__bullet"></div>
                 <div class="timeline__header">
-                    <h4 class="timeline__title">@item.CompanyName</h4>
-                    <h5 class="timeline__meta">@item.Title</h5>
-                    <p class="timeline__timeframe">@item.StartDate.Value.ToString("Y") - @(item.EndDate.HasValue ? item.EndDate.Value.ToString("Y") : "Devam Ediyor")</p>
+                    <h4 class="timeline__title">@item.SchoolName</h4>
+                        <h5 class="timeline__meta">@item.Department</h5>
+                        <p class="timeline__timeframe">@item.StartDate.ToShortDateString() - @(!item.EndDate.HasValue ? "Devam Ediyor" : item.EndDate?.ToString("d"))</p>
                 </div>
                 <div class="timeline__desc">
                     <p>@item.Description</p>
