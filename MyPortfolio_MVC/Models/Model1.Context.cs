@@ -30,7 +30,6 @@ namespace MyPortfolio_MVC.Models
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Education> Educations { get; set; }
-        public virtual DbSet<Expertise> Expertises { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<SocialMedia> SocialMedias { get; set; }
@@ -38,5 +37,6 @@ namespace MyPortfolio_MVC.Models
         public virtual DbSet<Testimonial> Testimonials { get; set; }
         public virtual DbSet<Experience> Experiences { get; set; }
         public virtual DbSet<Tbl_Admin> Tbl_Admins { get; set; }
+        public virtual DbSet<Expertise> Expertises { get; set; }
     }
 }

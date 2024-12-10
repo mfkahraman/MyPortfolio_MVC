@@ -132,7 +132,6 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -217,11 +216,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="images\Testimonials\businessman.png" />
-    <Content Include="images\Testimonials\developer %281%29.png" />
-    <Content Include="images\Testimonials\man %281%29.png" />
-    <Content Include="images\Testimonials\manager %282%29.png" />
-    <Content Include="images\Testimonials\manager.png" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
@@ -238,6 +232,13 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="wwwroot\images\About\myfoto3.jpeg" />
+    <Content Include="wwwroot\images\Testimonials\businessman.png" />
+    <Content Include="wwwroot\images\Testimonials\developer %281%29.png" />
+    <Content Include="wwwroot\images\Testimonials\developers.png" />
+    <Content Include="wwwroot\images\Testimonials\man %281%29.png" />
+    <Content Include="wwwroot\images\Testimonials\manager %282%29.png" />
+    <Content Include="wwwroot\images\Testimonials\manager.png" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -473,6 +474,7 @@
     <Content Include="Views\Message\Index.cshtml" />
     <Content Include="Views\Message\MessageDetail.cshtml" />
     <Content Include="Views\Default\DefaultTestimonial.cshtml" />
+    <Content Include="wwwroot\CV\Özgeçmişim-FurkanKahraman.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

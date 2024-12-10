@@ -1,6 +1,48 @@
-﻿.skills-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
+﻿/* Başlık ve üst kenar boşluğu */
+.text-pretitle.with-line {
+    margin-bottom: 5px; /* Başlık altındaki boşluk */
 }
+
+/* Grid Container */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Aralık */
+    justify-content: flex-start;
+    padding: 10px 0;
+    margin-top: 0; /* Başlık ile grid arasındaki boşluk */
+}
+
+/* Skill Card */
+.skill-card {
+    flex: 0 1 calc(25% - 10px); /* Her kart %25 genişliğinde */
+    text-align: center;
+    padding: 10px;
+}
+
+    /* Kart başlıkları */
+    .skill-card h3 {
+        font-size: 2.0rem;
+        margin-bottom: 5px;
+    }
+
+    /* Açıklama */
+    .skill-card .description {
+        font-size: 1.3rem;
+        color: gray;
+        margin: 5px 0;
+    }
+
+/* Yıldızlar */
+.stars {
+    margin-top: 5px;
+}
+
+.star {
+    font-size: 1.2rem;
+    color: lightgray; /* Boş yıldız rengi */
+}
+
+    .star.filled {
+        color: gold; /* Dolu yıldız rengi */
+    }

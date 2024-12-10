@@ -13,7 +13,7 @@ namespace MyPortfolio_MVC.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
-
+    
     public partial class Tbl_Admin
     {
         public int AdminId { get; set; }

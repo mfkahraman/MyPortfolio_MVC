@@ -60,14 +60,16 @@
           <Property Name="Title" Type="nvarchar" MaxLength="50" />
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
-          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Expertises">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Level" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Messages">
           <Key>
@@ -212,13 +214,6 @@
           <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Degree" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Expertise">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Message">
           <Key>
             <PropertyRef Name="Id" />
@@ -288,7 +283,6 @@
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Contacts" EntityType="Self.Contact" />
           <EntitySet Name="Educations" EntityType="Self.Education" />
-          <EntitySet Name="Expertises" EntityType="Self.Expertise" />
           <EntitySet Name="Messages" EntityType="Self.Message" />
           <EntitySet Name="Projects" EntityType="Self.Project" />
           <EntitySet Name="SocialMedias" EntityType="Self.SocialMedia" />
@@ -300,6 +294,7 @@
           </AssociationSet>
           <EntitySet Name="Experiences" EntityType="MyPortfolioModel.Experience" />
           <EntitySet Name="Tbl_Admin" EntityType="MyPortfolioModel.Tbl_Admin" />
+          <EntitySet Name="Expertises" EntityType="MyPortfolioModel.Expertise" />
         </EntityContainer>
         <EntityType Name="Experience">
           <Key>
@@ -310,7 +305,7 @@
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="StartDate" Type="DateTime" Precision="3" />
           <Property Name="EndDate" Type="DateTime" Precision="3" />
-          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Tbl_Admin">
           <Key>
@@ -322,6 +317,15 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Expertise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -377,14 +381,6 @@
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Degree" ColumnName="Degree" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Expertises">
-            <EntityTypeMapping TypeName="MyPortfolioModel.Expertise">
-              <MappingFragment StoreEntitySet="Expertises">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -464,6 +460,16 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expertises">
+            <EntityTypeMapping TypeName="MyPortfolioModel.Expertise">
+              <MappingFragment StoreEntitySet="Expertises">
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
