@@ -66,5 +66,11 @@ namespace MyPortfolio_MVC.Controllers
             var values = db.Educations.ToList();
             return PartialView(values);
         }
+
+        public PartialViewResult DefaultTestimonial()
+        {
+            var values = db.Testimonials.ToList();
+            return PartialView(values);
+        }
     }
 }

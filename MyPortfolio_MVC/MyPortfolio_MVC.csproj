@@ -213,9 +213,15 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="CSS\Custom.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\Testimonials\businessman.png" />
+    <Content Include="images\Testimonials\developer %281%29.png" />
+    <Content Include="images\Testimonials\man %281%29.png" />
+    <Content Include="images\Testimonials\manager %282%29.png" />
+    <Content Include="images\Testimonials\manager.png" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
@@ -466,10 +472,10 @@
     <Content Include="Views\Default\DefaultEducation.cshtml" />
     <Content Include="Views\Message\Index.cshtml" />
     <Content Include="Views\Message\MessageDetail.cshtml" />
+    <Content Include="Views\Default\DefaultTestimonial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

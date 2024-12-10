@@ -1,17 +1,38 @@
-﻿@model List<MyPortfolio_MVC.Models.Expertise>
+﻿@*@model List<MyPortfolio_MVC.Models.Expertise>
+
+    <div class="row about-expertise" data-animate-block id="expertise">
+        <div class="column lg-12">
+
+            <h2 class="text-pretitle with-line" data-animate-el>UZMANLIK ALANLARIM</h2>
+
+            <ul class="skills-list h1" data-animate-el>
+                @foreach (var item in Model)
+                {
+                    <li>@item.Title</li>
+                }
+
+            </ul>
+
+        </div>
+    </div>*@
+
+
+@model List<MyPortfolio_MVC.Models.Expertise>
 
 <div class="row about-expertise" data-animate-block id="expertise">
     <div class="column lg-12">
 
         <h2 class="text-pretitle with-line" data-animate-el>UZMANLIK ALANLARIM</h2>
 
-        <ul class="skills-list h1" data-animate-el>
+        <!-- Skills Container -->
+        <div class="skills-container" data-animate-el>
             @foreach (var item in Model)
             {
-                <li>@item.Title</li>
+                <div class="skill-card">
+                    <h3>@item.Title</h3>
+                </div>
             }
-
-        </ul>
+        </div>
 
     </div>
 </div>
