@@ -1,0 +1,32 @@
+﻿@model MyPortfolio_MVC.Models.About
+@{
+    ViewBag.Title = "UpdateAbout";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<h2>Hakkımda Bilgileri Güncelleme Sayfası</h2>
+
+<form method="post" enctype="multipart/form-data">
+
+    <div class="text-center">
+        <img src="@Model.ImageUrl" style="width:75px;height:100px" alt="Profil Fotoğrafı Yüklenemedi">
+        <label>Hakkımda Fotoğrafı</label>
+    </div>
+    <br /><br />
+    <label>Başlık</label>
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    <br />
+    <label>Açıklama</label>
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    <label>Hakkımda Fotoğrafı Yükleyin</label>
+    <br />
+    <input type="file" name="AboutImage" />
+    <br /> <br />
+    <label>Cv Yükleyin</label>
+    <br />
+    <input type="file" name="CvFile" />
+    <br /> <br />
+    <button class="btn btn-outline-primary">Güncelle</button>
+</form>
+

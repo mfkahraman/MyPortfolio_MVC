@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/AdminLayout/Layout.cshtml";
-    int count = 0;
 }
 
 <h2>Eğitim Hayatım</h2>
@@ -23,7 +22,6 @@
 
 @foreach (var item in Model)
 {
-    count++;
     <tr>
     <th>@item</th>
     <td>@item.SchoolName</td>

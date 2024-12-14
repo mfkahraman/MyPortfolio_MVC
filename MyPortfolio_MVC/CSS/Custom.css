@@ -46,3 +46,19 @@
     .star.filled {
         color: gold; /* Dolu yıldız rengi */
     }
+
+
+
+.banner-description {
+    --text-huge: 7.0rem;
+    font-size: var(--text-huge);
+    line-height: 1.0740;
+    margin-top: 0;
+    /* Yeni eklemeler */
+    display: block;
+    max-width: 70%; /* Sayfanın %60'lık kısmını kullanır */
+    word-wrap: break-word; /* Uzun kelimeleri ve cümleleri alt satıra geçirir */
+    white-space: normal; /* Yazının tek satırda olmaması için */
+    overflow-wrap: break-word; /* Kelimelerin satır sonunda kırılmasını sağlar */
+    hyphens: auto; /* Eğer mümkünse kelimeleri hecelemeye çalışır */
+}

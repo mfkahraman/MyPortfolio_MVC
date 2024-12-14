@@ -9,12 +9,14 @@
 <form method="post" enctype="multipart/form-data">
 
     <div class="text-center">
-        <img src="@Model.ImageUrl" style="width:75px;height:100px" alt="Profil Resmi">
-        <label>Profil Resmi</label>
+        <img src="@Model.ImageUrl" style="width:75px;height:100px" alt="Profil Fotoğrafı Yüklenemedi">
+        <label>Profil Fotoğrafı</label>
     </div>
     <br /><br />
-    <label>Profil Resmi Yükleyin</label>
+    <label>Profil Fotoğrafı Yükleyin</label>
+    <br />
     <input type="file" name="ImageFile" />
+    <br />
     <br />
     <label>Ad</label>
     <input type="text" name="Name" class="form-control" value="@Model.Name" />

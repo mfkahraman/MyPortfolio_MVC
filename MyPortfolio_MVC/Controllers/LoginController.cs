@@ -30,7 +30,7 @@ namespace MyPortfolio_MVC.Controllers
             FormsAuthentication.SetAuthCookie(value.Email, false);
 
             Session["email"] = value.Email;
-            return RedirectToAction("Index", "Category");
+            return RedirectToAction("Index", "Profile");
         }
     }
 }

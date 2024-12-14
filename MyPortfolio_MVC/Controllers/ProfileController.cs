@@ -33,10 +33,10 @@ namespace MyPortfolio_MVC.Controllers
                 if (model.ImageFile != null)
                 {
                     var currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                    var saveLocation = currentDirectory + "images\\";
+                    var saveLocation = currentDirectory + "wwwroot\\images\\ProfilePhoto\\";
                     var fileName = Path.Combine(saveLocation, model.ImageFile.FileName);
                     model.ImageFile.SaveAs(fileName);
-                    admin.ImageUrl = "/images/" + model.ImageFile.FileName;
+                    admin.ImageUrl = "/wwwroot/images/ProfilePhoto/" + model.ImageFile.FileName;
                 }
 
                 admin.Name = model.Name;
