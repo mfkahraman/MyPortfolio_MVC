@@ -1,0 +1,34 @@
+﻿@model MyPortfolio_MVC.Models.Expertise
+
+@{
+    ViewBag.Title = "Yeni Uzmanlık Ekle";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<h2>Yeni Uzmanlık Ekle</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <label for="Title">Başlık</label>
+        @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Title)
+    </div>
+
+    <div class="form-group">
+        <label for="Description">Açıklama</label>
+        @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Description)
+    </div>
+
+    <div class="form-group">
+        <label for="Level">Seviye</label>
+        @Html.DropDownListFor(x => x.Level, new SelectList(new[]
+        {
+            1, 2, 3, 4, 5
+        }), "Seçiniz", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Level)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Ekle</button>
+}

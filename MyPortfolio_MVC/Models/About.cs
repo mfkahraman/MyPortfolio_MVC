@@ -21,11 +21,5 @@ namespace MyPortfolio_MVC.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public string CvUrl { get; set; }
-
-        [NotMapped]
-        public HttpPostedFileBase AboutImage { get; set; }
-
-        [NotMapped]
-        public HttpPostedFileBase CvFile { get; set; }
     }
 }

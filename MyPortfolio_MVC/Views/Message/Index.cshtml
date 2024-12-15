@@ -1,42 +1,61 @@
-﻿@model List<MyPortfolio_MVC.Models.Message>
+﻿@model IEnumerable<MyPortfolio_MVC.Models.Message>
+
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Views/AdminLayout/Layout.cshtml";
-    int count = 0;
 }
 
-<h2>Gelen Mesajlar</h2>
-<br />
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th> # </th>
-            <th>Gönderen Ad Soyad</th>
-            <th>Mail</th>
-            <th>Konu</th>
-            <th>Mesajı Aç</th>
-        </tr>
-    </thead>
+<div class="container mt-5">
+    <h2 class="text-center">Gelen Mesajlar</h2>
 
-    <tbody>
-        @foreach (var item in Model)
-        {
-            count++;
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <table class="table table-bordered table-striped mt-4">
+        <thead>
             <tr>
-                <td>@count</td>
-                <td>@item.Name</td>
-                <td>@item.Email</td>
-                <td>@item.Subject</td>
-                <td><a href="/Message/DeleteMessage/@item.Id" class="btn btn-outline-danger">Sil</a></td>
-                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    Launch static backdrop modal
-</button></td>
+                <th>Gönderen</th>
+                <th>Mesaj Konusu</th>
+                <th>Durum</th>
+                <th>Aksiyonlar</th>
             </tr>
-        }
-    </tbody>
+        </thead>
+        <tbody>
+            @foreach (var message in Model)
+            {
+                <tr>
+                    <td>@message.Name</td>
+                    <td>@message.Subject</td>
+                    <td>
+                        @if (message.IsRead.HasValue && message.IsRead.Value)
+                        {
+                            <span class="badge badge-success">Okundu</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-warning">Okunmadı</span>
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink("Mesajı Oku", "MessageDetail", new { id = message.Id }, new { @class = "btn btn-info btn-sm" })
 
-</table>
+                        @if (!message.IsRead.HasValue || !message.IsRead.Value)
+                        {
+                            @Html.ActionLink("Okundu Olarak İşaretle", "MarkAsRead", new { id = message.Id }, new { @class = "btn btn-success btn-sm ml-2" })
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
-<br />
-
-@Html.Action("MessageDetail")

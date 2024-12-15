@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MyPortfolio_MVC.Models.Testimonial>
+
+@{
+    ViewBag.Title = "Referanslar";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<h2>Referanslar</h2>
+<a href="@Url.Action("CreateTestimonial", "Testimonial")" class="btn btn-primary">Yeni Ekle</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ad Soyad</th>
+            <th>Unvan</th>
+            <th>Yorum</th>
+            <th>Görsel</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NameSurname</td>
+                <td>@item.Title</td>
+                <td>@item.Comment</td>
+                <td><img src="@item.ImageUrl" alt="Görsel" style="width:100px;height:auto;" /></td>
+                <td>
+                    <a href="@Url.Action("UpdateTestimonial", "Testimonial", new { id = item.Id })" class="btn btn-warning">Güncelle</a>
+                    <a href="@Url.Action("DeleteTestimonial", "Testimonial", new { id = item.Id })" class="btn btn-danger" onclick="return confirm('Silmek istediğinizden emin misiniz?');">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -17,7 +17,7 @@ namespace MyPortfolio_MVC.Models
         public int Id { get; set; }
         public string CompanyName { get; set; }
         public string Title { get; set; }
-        public Nullable<System.DateTime> StartDate { get; set; }
+        public System.DateTime StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public string Description { get; set; }
     }

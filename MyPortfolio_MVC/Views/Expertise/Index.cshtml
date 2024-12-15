@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MyPortfolio_MVC.Models.Expertise>
+
+@{
+    ViewBag.Title = "Uzmanlıklar";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<h2>Uzmanlıklar</h2>
+
+<a href="@Url.Action("CreateExpertise")" class="btn btn-primary">Yeni Uzmanlık Ekle</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Başlık</th>
+            <th>Açıklama</th>
+            <th>Seviye</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+                <td>@item.Level</td>
+                <td>
+                    <a href="@Url.Action("UpdateExpertise", new { id = item.Id })" class="btn btn-warning">Düzenle</a>
+                    <a href="@Url.Action("DeleteExpertise", new { id = item.Id })" class="btn btn-danger" onclick="return confirm('Emin misiniz?')">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

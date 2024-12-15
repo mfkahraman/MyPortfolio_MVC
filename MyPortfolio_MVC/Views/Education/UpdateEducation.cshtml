@@ -1,36 +1,55 @@
 ﻿@model MyPortfolio_MVC.Models.Education
+
 @{
-    ViewBag.Title = "UpdateEducation";
+    ViewBag.Title = "Eğitim Düzenle";
     Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
 
-<h2>Eğitim Güncelleme Sayfası</h2>
+<h2>Eğitim Düzenle</h2>
 
-<form method="post">
-    @Html.HiddenFor(x=> x.Id)
-    <label>Okul Adı</label>
-    @Html.TextBoxFor(x => x.SchoolName, new { @class = "form-control" })
-    <br />
-    <label>Bölüm Adı</label>
-    @Html.TextBoxFor(x => x.Department, new { @class = "form-control" })
-    <br />
-    <label>Açıklama</label>
-    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
-    <br />
-    <label>Başlama Tarihi</label>
-    <input type="datetime" name="StartDate" value="@Model.StartDate.ToString("d")" class="form-control" />
-    <br />
-    <label>Bitiş Tarihi<span><strong>(Eğer Devam Ediyorsa Boş Bırakın)</strong></span></label>
-    <input type="datetime"  value="@(Model.EndDate.HasValue ? Model.EndDate.Value.ToString("d") : "")" name="EndDate" class="form-control" />
-    <br />
-    <label>Derece<span><strong>(Lisans, Önlisans, Yükseklisans vs.)</strong></span></label>
-    <select name="Degree" class="form-control">
-        <option disabled>Seçiminizi yapın</option>
-        <option value="ÖnLisans" @(Model.Degree=="ÖnLisans" ? "selected" : "")>Önlisans</option>
-        <option value="Lisans" @(Model.Degree=="Lisans" ? "selected" : "")>Lisans</option>
-        <option value="Yüksek Lisans" @(Model.Degree=="Yüksek Lisans" ? "selected" : "")>Yüksek lisans</option>
-    </select>
-    <br />
-    <button class="btn btn-outline-primary">Güncelle</button>
-    <br />
-</form>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <label for="SchoolName">Okul Adı</label>
+        @Html.TextBoxFor(x => x.SchoolName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.SchoolName)
+    </div>
+
+    <div class="form-group">
+        <label for="Department">Bölüm</label>
+        @Html.TextBoxFor(x => x.Department, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Department)
+    </div>
+
+    <div class="form-group">
+        <label for="StartDate">Başlangıç Tarihi</label>
+        @Html.TextBoxFor(x => x.StartDate, new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(x => x.StartDate)
+    </div>
+
+    <div class="form-group">
+        <label for="EndDate">Bitiş Tarihi</label>
+        @Html.TextBoxFor(x => x.EndDate, new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(x => x.EndDate)
+    </div>
+
+    <div class="form-group">
+        <label for="Description">Açıklama</label>
+        @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Description)
+    </div>
+
+    <div class="form-group">
+        <label for="Degree">Derece</label>
+        @Html.DropDownListFor(x => x.Degree, new SelectList(new[]
+        {
+            "Önlisans",
+            "Lisans",
+            "Yüksek Lisans",
+            "Doktora"
+        }), "Seçiniz", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Degree)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+}

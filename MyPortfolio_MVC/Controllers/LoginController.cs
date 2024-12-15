@@ -11,7 +11,7 @@ namespace MyPortfolio_MVC.Controllers
     [AllowAnonymous]
     public class LoginController : Controller
     {
-        MyPortfolioEntities db = new MyPortfolioEntities();
+        private readonly MyPortfolioEntities db = new MyPortfolioEntities();
         [HttpGet]
         public ActionResult Index()
         {

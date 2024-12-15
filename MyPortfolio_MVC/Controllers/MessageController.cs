@@ -1,51 +1,45 @@
 ﻿using MyPortfolio_MVC.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
-namespace MyPortfolio_MVC.Controllers
+public class MessageController : Controller
 {
-    public class MessageController : Controller
+    private readonly MyPortfolioEntities db = new MyPortfolioEntities();
+
+    public ActionResult Index()
     {
-        // GET: Message
-        MyPortfolioEntities db = new MyPortfolioEntities();
-        public ActionResult Index()
+        var messages = db.Messages.ToList();
+        return View(messages);
+    }
+
+    public ActionResult MessageDetail(int id)
+    {
+        var message = db.Messages.Find(id);
+        if (message == null)
         {
-            var values = db.Messages.Where(x=> x.IsRead == false).ToList();
-            return View(values);
+            return HttpNotFound();
         }
 
-        public PartialViewResult MessageDetail(int? id)
+        if (!message.IsRead.HasValue || !message.IsRead.Value)
         {
-            if (id == null)
-            {
-                // Hata mesajını ViewBag ile taşıyoruz
-                ViewBag.ErrorMessage = "Mesaj ID'si geçersiz.";
-                return PartialView("_Error"); // Hata durumu için bir özel view döndürülüyor.
-            }
-
-            var message = db.Messages.Find(id);
-            if (message == null)
-            {
-                // Mesaj bulunamazsa hata mesajı
-                ViewBag.ErrorMessage = "Mesaj bulunamadı.";
-                return PartialView("_Error"); // Hata durumu için aynı özel view kullanılıyor.
-            }
-
-            // Mesaj başarıyla bulunursa view'a modeli aktar
-            return PartialView("MessageDetail", message);
-        }
-
-
-        [HttpPost]
-        public ActionResult MakeMessageRead(int id)
-        {
-            var value = db.Messages.Find(id);
-            value.IsRead = true;
+            message.IsRead = true;
             db.SaveChanges();
-            return RedirectToAction("Index");
         }
+
+        return View(message); 
+    }
+    public ActionResult MarkAsRead(int id)
+    {
+        var message = db.Messages.Find(id);
+        if (message == null)
+        {
+            return HttpNotFound();
+        }
+
+        message.IsRead = true;
+        db.SaveChanges();
+
+        TempData["SuccessMessage"] = "Mesaj başarıyla okundu olarak işaretlendi!";
+        return RedirectToAction("Index");
     }
 }

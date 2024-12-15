@@ -1,38 +1,57 @@
-﻿@model List<MyPortfolio_MVC.Models.Education>
+﻿@model IEnumerable<MyPortfolio_MVC.Models.Education>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Eğitimler";
     Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
 
-<h2>Eğitim Hayatım</h2>
+<h2>Eğitimler</h2>
 
-<br />
-
-<table class="table table-bordered table-hover">
-    <tr>
-        <th>#</th>
-        <th>Okul Adı</th>
-        <th>Bölüm</th>
-        <th>Başlangıç</th>
-        <th>Bitiş</th>
-        <th>Derece</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
-    </tr>
-
-@foreach (var item in Model)
+@if (TempData["SuccessMessage"] != null)
 {
-    <tr>
-    <th>@item</th>
-    <td>@item.SchoolName</td>
-    <td>@item.Department</td>
-    <td>@item.StartDate.ToShortDateString()</td>
-    <td>@(String.IsNullOrEmpty(item.EndDate?.ToString()) ? "Devam ediyor" : item.EndDate?.ToShortDateString())</td>
-    <td>@item.Degree</td>
-    <td><a href="/Education/DeleteEducation/@item.Id" class="btn btn-outline-danger">Sil</a></td>
-    <td><a href="/Education/UpdateEducation/@item.Id" class="btn btn-outline-info">Güncelle</a></td>
-    </tr>
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
 }
-</table>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<a href="@Url.Action("CreateEducation")" class="btn btn-primary">Yeni Eğitim Ekle</a>
 <br />
-<a href="/Education/CreateEducation" class="btn btn-outline-success">Yeni Eğitim Ekle</a>
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Okul Adı</th>
+            <th>Bölüm</th>
+            <th>Başlangıç Tarihi</th>
+            <th>Bitiş Tarihi</th>
+            <th>Açıklama</th>
+            <th>Derece</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var education in Model)
+        {
+            <tr>
+                <td>@education.SchoolName</td>
+                <td>@education.Department</td>
+                <td>@education.StartDate.ToString("dd/MM/yyyy")</td>
+                <td>@(education.EndDate.HasValue ? education.EndDate.Value.ToString("dd/MM/yyyy") : "Devam Ediyor")</td>
+                <td>@education.Description</td>
+                <td>@education.Degree</td>
+                <td>
+                    <a href="@Url.Action("UpdateEducation", new { id = education.Id })" class="btn btn-warning">Düzenle</a>
+                    <a href="@Url.Action("Delete", new { id = education.Id })" class="btn btn-danger" onclick="return confirm('Emin misiniz?')">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,8 @@
+﻿@model List<MyPortfolio_MVC.Models.SocialMedia>
+
+<ul class="intro-social">
+    @foreach (var item in Model)
+    {
+        <li><a href="@item.Url" title="@item.Name Hesabım">@item.Name</a></li>
+    }
+</ul>

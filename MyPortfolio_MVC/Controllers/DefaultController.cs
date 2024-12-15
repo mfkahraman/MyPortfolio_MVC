@@ -49,10 +49,27 @@ namespace MyPortfolio_MVC.Controllers
         [HttpPost]
         public ActionResult SendMessage(Message model)
         {
-            model.IsRead = false;
-            db.Messages.Add(model);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    model.IsRead = false;
+                    db.Messages.Add(model);
+                    db.SaveChanges();
+                    TempData["SuccessMessage"] = "Mesajınız başarıyla gönderildi!";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Mesaj gönderilirken bir hata oluştu.";
+                    return PartialView("SendMessage", model); // Doğru partial'ı döndür.
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Mesaj gönderilirken bir hata oluştu: " + ex.Message;
+                return PartialView("SendMessage", model);
+            }
         }
 
         public PartialViewResult DefaultAbout()
@@ -70,6 +87,12 @@ namespace MyPortfolio_MVC.Controllers
         public PartialViewResult DefaultTestimonial()
         {
             var values = db.Testimonials.ToList();
+            return PartialView(values);
+        }
+
+        public PartialViewResult DefaultSocialMedia()
+        {
+            var values = db.SocialMedias.ToList();
             return PartialView(values);
         }
     }

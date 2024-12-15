@@ -1,0 +1,44 @@
+﻿@model List<MyPortfolio_MVC.Models.Banner>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+
+<h2>Banner Sayfası</h2>
+
+<br />
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Başlık</th>
+            <th>Açıklama</th>
+            <th>Aktiflik Durumu</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Aktif</th>
+            <th>Pasif</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.Id</th>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+                <td>@(item.IsShown == true ? "Aktif Durumda" : "Pasif Durumda")</td>
+                <td><a href="/Banner/DeleteBanner/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+                <td><a href="/Banner/UpdateBanner/@item.Id" class="btn btn-outline-info">Güncelle</a></td>
+                <td><a href="/Banner/ActivateBanner/@item.Id" class="btn btn-outline-success">Aktifleştir</a></td>
+                <td><a href="/Banner/DeactivateBanner/@item.Id" class="btn btn-outline-light">Pasifleştir</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<a href="/Banner/CreateBanner" class="btn btn-outline-success">Yeni Banner Ekle</a>
+

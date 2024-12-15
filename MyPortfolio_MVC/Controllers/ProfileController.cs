@@ -10,7 +10,7 @@ namespace MyPortfolio_MVC.Controllers
 {
     public class ProfileController : Controller
     {
-        MyPortfolioEntities db = new MyPortfolioEntities();
+        private readonly MyPortfolioEntities db = new MyPortfolioEntities();
         public ActionResult Index()
         {
             string email = Session["email"].ToString();

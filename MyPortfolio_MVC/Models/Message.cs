@@ -7,6 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using System;
+
 namespace MyPortfolio_MVC.Models
 {
     using System;
@@ -15,9 +18,21 @@ namespace MyPortfolio_MVC.Models
     public partial class Message
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "Ad gereklidir.")]
+        [StringLength(100, ErrorMessage = "Ad en fazla 100 karakter olabilir.")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "E-posta gereklidir.")]
+        [EmailAddress(ErrorMessage = "Geçerli bir e-posta adresi giriniz.")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "Konu gereklidir.")]
+        [StringLength(200, ErrorMessage = "Konu en fazla 200 karakter olabilir.")]
         public string Subject { get; set; }
+
+        [Required(ErrorMessage = "Mesaj gereklidir.")]
+        [StringLength(1000, ErrorMessage = "Mesaj en fazla 1000 karakter olabilir.")]
         public string MessageContent { get; set; }
         public Nullable<bool> IsRead { get; set; }
     }

@@ -1,24 +1,22 @@
-﻿using MyPortfolio_MVC.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using MyPortfolio_MVC.Models;
 
 namespace MyPortfolio_MVC.Controllers
 {
-    [Authorize]
     public class CategoryController : Controller
     {
-        MyPortfolioEntities db = new MyPortfolioEntities();
+        private readonly MyPortfolioEntities db = new MyPortfolioEntities();
 
         public ActionResult Index()
         {
-            var values = db.Categories.ToList();
-            return View(values);
+            var categories = db.Categories.ToList();
+            return View(categories);
         }
 
-        [HttpGet]
         public ActionResult CreateCategory()
         {
             return View();
@@ -27,30 +25,71 @@ namespace MyPortfolio_MVC.Controllers
         [HttpPost]
         public ActionResult CreateCategory(Category category)
         {
-            db.Categories.Add(category);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    db.Categories.Add(category);
+                    db.SaveChanges();
+                    TempData["SuccessMessage"] = "Kategori başarıyla eklendi!";
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    TempData["ErrorMessage"] = "Bir hata oluştu: " + ex.Message;
+                }
+            }
+            return View(category);
+        }
+
+        [HttpGet]
+        public ActionResult UpdateCategory(int id)
+        {
+            var category = db.Categories.Find(id);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(category);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateCategory(Category model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var categoryToUpdate = db.Categories.Find(model.Id);
+                    if (categoryToUpdate == null)
+                    {
+                        return HttpNotFound();
+                    }
+
+                    categoryToUpdate.Name = model.Name;
+                    db.SaveChanges();
+
+                    TempData["SuccessMessage"] = "Kategori başarıyla güncellendi!";
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    TempData["ErrorMessage"] = "Bir hata oluştu: " + ex.Message;
+                }
+            }
+
+            return View(model);
         }
 
         public ActionResult DeleteCategory(int id)
         {
-            var value = db.Categories.Find(id);
-            db.Categories.Remove(value);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult UpdateCategory(int id)
-        {
-            var value = db.Categories.Find(id);
-            return View(value);
-        }
-
-        [HttpPost]
-        public ActionResult UpdateCategory(Category category)
-        {
-            var value = db.Categories.Find(category.Id);
-            value.Name = category.Name;
+            var category = db.Categories.Find(id);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+            db.Categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

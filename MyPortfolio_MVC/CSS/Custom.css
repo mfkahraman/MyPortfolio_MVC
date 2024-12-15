@@ -62,3 +62,33 @@
     overflow-wrap: break-word; /* Kelimelerin satır sonunda kırılmasını sağlar */
     hyphens: auto; /* Eğer mümkünse kelimeleri hecelemeye çalışır */
 }
+
+/*Mesaj Gönderin Alanı*/
+/* Tüm form elemanları aynı satıra yerleşecek */
+.contact-form .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Ad Soyad, Email, Konu inputlarının eşit genişlikte olması */
+.contact-form .column {
+    flex: 1 1 calc(33.333% - 15px); /* Üç kolon, her biri %33.33 genişliğinde */
+}
+
+.contact-form .lg-12 {
+    display: flex;
+    justify-content: center; /* Ortaya yerleştir */
+}
+
+    .contact-form .lg-12 textarea.form-control {
+        width: 100%;
+        max-width: 600px; /* Maksimum genişlik */
+        height: 150px;
+    }
+
+/* Submit butonunu tüm satıra yaymak */
+.contact-form button {
+    width: 100%; /* Buton da tüm genişliği kapsayacak */
+    padding: 10px;
+}

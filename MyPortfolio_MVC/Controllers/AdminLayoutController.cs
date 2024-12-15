@@ -9,7 +9,7 @@ namespace MyPortfolio_MVC.Controllers
 {
     public class AdminLayoutController : Controller
     {
-        MyPortfolioEntities db = new MyPortfolioEntities();
+        private readonly MyPortfolioEntities db = new MyPortfolioEntities();
         public ActionResult Layout()
         {
             return View();

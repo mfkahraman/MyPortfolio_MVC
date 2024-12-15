@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MyPortfolio_MVC.Models.Contact>
+
+@{
+    ViewBag.Title = "İletişim Bilgileri";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<h2>İletişim Bilgileri</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<a href="@Url.Action("CreateContact")" class="btn btn-primary">Yeni İletişim Bilgisi Ekle</a>
+<br />
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Telefon</th>
+            <th>Email</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contact in Model)
+        {
+            <tr>
+                <td>@contact.Id</td>
+                <td>@contact.Phone</td>
+                <td>@contact.Email</td>
+                <td>
+                    <a href="@Url.Action("UpdateContact", new { id = contact.Id })" class="btn btn-warning">Düzenle</a>
+                    <a href="@Url.Action("DeleteContact", new { id = contact.Id })" class="btn btn-danger" onclick="return confirm('Silmek istediğinizden emin misiniz?');">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -10,7 +10,7 @@ namespace MyPortfolio_MVC.Controllers
 {
     public class AboutController : Controller
     {
-        MyPortfolioEntities db = new MyPortfolioEntities();
+        private readonly MyPortfolioEntities db = new MyPortfolioEntities();
         public ActionResult Index()
         {
             var abouts = db.Abouts.ToList();

@@ -1,15 +1,19 @@
-﻿
+﻿@model MyPortfolio_MVC.Models.Category
+
 @{
-    ViewBag.Title = "CreateCategory";
     Layout = "~/Views/AdminLayout/Layout.cshtml";
+    ViewBag.Title = "Kategori Ekle";
 }
 
-<h2>Yeni Kategori Ekleme Sayfası</h2>
+<h2>@ViewBag.Title</h2>
 
-<form method="post">
-    <label>Kategori Adı</label>
-    <input type="text" name="Name" class="form-control" />
-    <br />
-    <button class="btn btn-primary">Kaydet</button>
+@using (Html.BeginForm("CreateCategory", "Category", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
 
-</form>
+    <button type="submit" class="btn btn-primary">Ekle</button>
+}

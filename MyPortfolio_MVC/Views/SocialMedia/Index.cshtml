@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MyPortfolio_MVC.Models.SocialMedia>
+
+@{
+    ViewBag.Title = "Sosyal Medya Platformları";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<h2>Sosyal Medya Platformları</h2>
+<a href="@Url.Action("CreateSocialMedia", "SocialMedia")" class="btn btn-primary">Yeni Ekle</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>URL</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Url</td>
+                <td>
+                    <a href="@Url.Action("UpdateSocialMedia", "SocialMedia", new { id = item.Id })" class="btn btn-warning">Güncelle</a>
+                    <a href="@Url.Action("DeleteSocialMedia", "SocialMedia", new { id = item.Id })" class="btn btn-danger" onclick="return confirm('Silmek istediğinizden emin misiniz?');">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MyPortfolio_MVC.Models.Experience>
+
+@{
+    ViewBag.Title = "Deneyimler";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<h2>Deneyimler</h2>
+
+<a href="@Url.Action("CreateExperience")" class="btn btn-primary">Yeni Deneyim Ekle</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Şirket Adı</th>
+            <th>Pozisyon</th>
+            <th>Başlangıç Tarihi</th>
+            <th>Bitiş Tarihi</th>
+            <th>Açıklama</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CompanyName</td>
+                <td>@item.Title</td>
+                <td>@item.StartDate.ToString("yyyy-MM-dd")</td>
+                <td>@(item.EndDate.HasValue ? item.EndDate.Value.ToString("yyyy-MM-dd") : "Devam Ediyor")</td>
+                <td>@item.Description</td>
+                <td>
+                    <a href="@Url.Action("UpdateExperience", new { id = item.Id })" class="btn btn-warning">Düzenle</a>
+                    <a href="@Url.Action("DeleteExperience", new { id = item.Id })" class="btn btn-danger" onclick="return confirm('Emin misiniz?')">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

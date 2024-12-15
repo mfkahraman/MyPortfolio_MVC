@@ -1,0 +1,28 @@
+﻿@model MyPortfolio_MVC.Models.SocialMedia
+
+@{
+    ViewBag.Title = "Sosyal Medya Platformu Güncelle";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<h2>Sosyal Medya Platformu Güncelle</h2>
+
+@using (Html.BeginForm("UpdateSocialMedia", "SocialMedia", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, "Ad")
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Sosyal medya adı giriniz" })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Url, "URL")
+        @Html.TextBoxFor(model => model.Url, new { @class = "form-control", placeholder = "Sosyal medya URL adresi giriniz" })
+        @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+    <a href="@Url.Action("Index", "SocialMedia")" class="btn btn-secondary">Geri Dön</a>
+}
